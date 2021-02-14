@@ -1,9 +1,19 @@
 <template>
   <div id="app">
+    <wk-header></wk-header>
     <router-view/>
   </div>
 </template>
-
+<script>
+// 网课导航条组件
+import Header from './components/Header'
+export default {
+  name:'app',
+  components:{
+    'wk-header':Header
+  }
+}
+</script>
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
