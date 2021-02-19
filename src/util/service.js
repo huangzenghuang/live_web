@@ -3,7 +3,6 @@ import axios from "axios";
 import {message} from 'ant-design-vue';
 
 
-console.info(message)
 const service = axios.create({
   timeout: 5000
 });
@@ -12,9 +11,9 @@ service.interceptors.request.use(config => {
   // 在发送请求之前做些什么
   config.headers = {
     "Content-Type": "application/x-www-form-urlencoded",
-    // "Token":"1AB4B14DE0AF1ACBEE8CA44C4CED50C18DC7DCDFCF3AF65120339B00BBFBA2E9F"
+    "Token":"39046A5AF8CB8DEE5E7232B8C8C53293X1"
   }
-  config.data.Token ="1AB4B14DE0AF1ACBEE8CA44C4CED50C18DC7DCDFCF3AF65120339B00BBFBA2E9F"
+  // config.data.Token ="1AB4B14DE0AF1ACBEE8CA44C4CED50C18DC7DCDFCF3AF65120339B00BBFBA2E9F"
   return config;
 }, error => {
   // 对请求错误做些什么
@@ -26,7 +25,7 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(( { data } )=>{
   // 对响应数据做点什么
   if(data.code != "0")
-    Message.error(data.msg)
+  message.error(data.msg)
   return data;
 },
 error =>{
