@@ -61,7 +61,7 @@ export default {
       }).catch((error)=>{
         console.error(error)
       })
-    },GotoCurri{
+    },GotoCurri(){
       this.$router.push({path: '/curriculum'});
     }
   },
