@@ -16,7 +16,7 @@
           查看更多<div></div>
         </div>
       </div>
-      <div class="recommend_carousel_box">
+      <div class="recommend_carousel_box" @click="GotoCurri">
         <div class="recommend_carousel">
           <div class="recommend_carousel_img">
             <img src="https://alioss.shejizhizi.com/front/首页图标/content_img_banner1_nor@2x.png" alt="">
@@ -61,6 +61,8 @@ export default {
       }).catch((error)=>{
         console.error(error)
       })
+    },GotoCurri{
+      this.$router.push({path: '/curriculum'});
     }
   },
   mounted(){

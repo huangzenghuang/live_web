@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import curriculum from '../views/curriculum/index.vue'
 
 Vue.use(VueRouter)
 
@@ -11,6 +12,13 @@ const routes = [
     component: Home,
     meta:{
       title: '首夜'
+    }
+  },  {
+    path: '/curriculum',
+    name: 'curriculum',
+    component: Home,
+    meta:{
+      title: '课程'
     }
   },
   {
