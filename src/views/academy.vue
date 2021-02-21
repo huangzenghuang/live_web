@@ -15,7 +15,10 @@
     </div>
     <div id="course">
       <div id="course_sort">
-        <div class="sort" v-for="item in sortTypeList" :key="item">{{item.name}}</div>
+        <div class="sort" v-for="item in sortTypeList" :key="item">
+          {{item}}
+          <div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -28,24 +31,9 @@ export default {
     return {
       courseList:[],
       selectList:[],
-      sortTypeList:[
-        {
-          value:'all',
-          name:'综合'
-        },
-        {
-          value:'new',
-          name:'最新课程'
-        },
-        {
-          value:'pay',
-          name:'最多购买'
-        },
-        {
-          value:'price',
-          name:'价格'
-        }
-      ]
+      sortTypeList:['综合','最新课程','最多购买','价格'],
+      sort:'',
+      type:'',
       // asc：正序，desc：倒序
     }
   },
@@ -148,10 +136,42 @@ export default {
       #course_sort{
         width: 11.25rem;
         height: 0.47rem;
+        margin: 0 auto;
         box-sizing: border-box;
         border-bottom: 0.07rem solid #0E86CA;
+
+        display: flex;
+        align-items: center;
         .sort{
-          width: 11.25rem;
+          display: flex;
+          align-items: center;
+          height: 0.47rem;
+          padding: 0 0.53rem;
+
+          font-size: 0.19rem;
+          font-family: Source Han Sans CN;
+          font-weight: 500;
+          color: #999999;
+          >div{
+            width: 0.14rem;
+            height: 0.14rem;
+            margin-left: 0.12rem;
+            background: url(https://alioss.shejizhizi.com/front/首页图标/contentr_icon_price_nor@2x.png) no-repeat center center / cover;
+          }
+        }
+        .sort:hover{
+          color: #FFFFFF;
+        }
+        .sort_select{
+          color: #fff;
+          background: #0E86CA;
+          border-radius: 0.04rem;
+          >div{
+            background: url(https://alioss.shejizhizi.com/front/首页图标/contentr_icon_trise_selected@2x.png) no-repeat center center / cover;
+          }
+          .asc{
+            transform: rotate(180deg);
+          }
         }
       }
       #course_list{

@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <a-carousel id="carousel" arrows>
+    <a-carousel id="carousel" arrows autoplay ref="carousel">
       <div slot="prevArrow"  class="custom_slick_arrow custom_slick_arrow_left" style="left: 2.58rem;zIndex: 1"></div>
       <div slot="nextArrow" class="custom_slick_arrow custom_slick_arrow_right" style="right: 2.58rem"></div>
       <div class="carousel" v-for="item in carouselList" :key="item.id">
@@ -16,27 +16,62 @@
           查看更多<div></div>
         </div>
       </div>
-      <div class="recommend_carousel_box" @click="GotoCurri">
-        <div class="recommend_carousel">
+      <div class="recommend_carousel_box">
+        <div class="recommend_carousel" v-for="item in freeCourse" :key="item.id">
           <div class="recommend_carousel_img">
-            <img src="https://alioss.shejizhizi.com/front/首页图标/content_img_banner1_nor@2x.png" alt="">
-            <div>直播</div>
+            <img :src="item.image" alt="">
+            <div>{{item.type_str}}</div>
           </div>
           <div class="recommend_carousel_content">
             <div class="content_title">
-              课程标题
+              {{item.title}}
             </div>
             <div class="content_main">
-              <p>开课时间：08月19日 20:30开课</p>
-              <p>难度：<span class="difficulty_too_easy">太简单</span></p>
+              <p>开课时间：{{item.curriculum_time}}开课</p>
+              <p>难度：<span :class="difficulty[item.level]">{{item.level_str}}</span></p>
               <div class="content_price">免费</div>
             </div>
             <div class="content_user">
               <div>
-                <img src="https://alioss.shejizhizi.com/front/首页图标/content_img_teacher_nor@2x.png" alt="">
-                用户信息
+                <img :src="item.avatar" alt="">
+                {{item.nickname}}
               </div>
-              <div>9999人已报名</div>
+              <div>{{item.applys}}人已报名</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="recommend">
+      <div class="recommend_title">
+        <div class="recommend_title_left">
+          精品好课
+        </div> 
+        <div class="recommend_title_right">
+          查看更多<div></div>
+        </div>
+      </div>
+      <div class="recommend_carousel_box">
+        <div class="recommend_carousel" v-for="item in boutiqueCourse" :key="item.id">
+          <div class="recommend_carousel_img">
+            <img :src="item.image" alt="">
+            <div>{{item.type_str}}</div>
+          </div>
+          <div class="recommend_carousel_content">
+            <div class="content_title">
+              {{item.title}}
+            </div>
+            <div class="content_main">
+              <p>开课时间：{{item.curriculum_time}}开课</p>
+              <p>难度：<span :class="difficulty[item.level]">{{item.level_str}}</span></p>
+              <div class="content_price">免费</div>
+            </div>
+            <div class="content_user">
+              <div>
+                <img :src="item.avatar" alt="">
+                {{item.nickname}}
+              </div>
+              <div>{{item.applys}}人已报名</div>
             </div>
           </div>
         </div>
@@ -49,7 +84,10 @@ export default {
   name: 'Home',
   data(){
     return {
-      carouselList:[]
+      carouselList:[],
+      freeCourse:[],
+      boutiqueCourse:[],
+      difficulty:['','difficulty_too_easy','difficulty_easy','difficulty_medium','difficulty_difficult','difficulty_too_difficult']
     }
   },
   methods:{
@@ -58,15 +96,33 @@ export default {
         position:'index'
       }).then(({data})=>{
         this.carouselList = data
+        setTimeout(() => {
+          this.$refs.carousel.next()
+        }, 200);
       }).catch((error)=>{
         console.error(error)
       })
-    },GotoCurri(){
-      this.$router.push({path: '/curriculum'});
+    },
+    queryCourse(){
+      this.$axios.post('https://wkapi.shejizhizi.com/?s=App.Goods_Goods.GoodsList',{
+      }).then(({data})=>{
+        this.freeCourse = data
+      }).catch((error)=>{
+        console.info(error)
+      })
+      this.$axios.post('https://wkapi.shejizhizi.com/?s=App.Goods_Goods.GoodsList',{
+        is_free:1,
+        page_size:8
+      }).then(({data})=>{
+        this.boutiqueCourse = data
+      }).catch((error)=>{
+        console.info(error)
+      })
     }
   },
   mounted(){
     this.queryCarousel()
+    this.queryCourse()
   }
 }
 </script>
@@ -161,6 +217,7 @@ export default {
       .recommend_carousel_box{
         display: flex;
         flex-wrap: wrap;
+        // justify-content: space-between;
         .recommend_carousel{
           width: 2.66rem;
           height: 3.02rem;
@@ -168,6 +225,8 @@ export default {
           box-sizing: border-box;
           border: 0.01rem solid #66CCFF;
           border-radius: 0.04rem;
+          margin-right: 0.2rem;
+          margin-bottom: 0.49rem;
           .recommend_carousel_img{
             position: relative;
             img{
@@ -248,6 +307,9 @@ export default {
               }
             }
           }
+        }
+        .recommend_carousel:nth-child(4n){
+          margin-right: 0rem;
         }
       }
     }

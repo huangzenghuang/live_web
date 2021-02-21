@@ -3,6 +3,7 @@
     <wk-header class="header"></wk-header>
     <wk-sidebar class="siderbar"></wk-sidebar>
     <router-view class="router"/>
+    <wk-footer></wk-footer>
   </div>
 </template>
 <script>
@@ -10,11 +11,14 @@
 import Header from './components/Header'
 // 网课导航条组件
 import Sidebar from './components/Sidebar'
+// 网课页脚组件
+import Footer from './components/Footer'
 export default {
   name:'app',
   components:{
     'wk-header':Header,
-    'wk-sidebar':Sidebar
+    'wk-sidebar':Sidebar,
+    'wk-footer':Footer,
   }
 }
 </script>
@@ -57,10 +61,10 @@ export default {
   .difficulty_medium{
     color: #33FF99;
   }
-  .difficulty_too_easy{
+  .difficulty_difficult{
     color: #FF9933;
   }
-  .difficulty_too_easy{
+  .difficulty_too_difficult{
     color: #CC3333;
   }
 }

@@ -11,7 +11,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta:{
-      title: '首夜'
+      title: '首页',
     }
   },  {
     path: '/curriculum',
