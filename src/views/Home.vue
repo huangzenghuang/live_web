@@ -217,7 +217,6 @@ export default {
       .recommend_carousel_box{
         display: flex;
         flex-wrap: wrap;
-        // justify-content: space-between;
         .recommend_carousel{
           width: 2.66rem;
           height: 3.02rem;
@@ -310,6 +309,10 @@ export default {
         }
         .recommend_carousel:nth-child(4n){
           margin-right: 0rem;
+        }
+        .recommend_carousel:hover{
+          position: relative;
+          bottom: 0.09rem;
         }
       }
     }
