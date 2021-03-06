@@ -46,6 +46,7 @@
         </div>
       </div>
     </div>
+    <wk-footer></wk-footer>
   </div>
 </template>
 
@@ -325,6 +326,9 @@ export default {
       }
       .recommend_carousel:nth-child(4n){
         margin-right: 0rem;
+      }
+      .recommend_carousel:nth-child(n+15){
+        margin-bottom: 0rem;
       }
       .recommend_carousel:hover{
         position: relative;

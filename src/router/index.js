@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import curriculum from '../views/curriculum/index.vue'
 
 Vue.use(VueRouter)
 
@@ -13,10 +12,19 @@ const routes = [
     meta:{
       title: '首页',
     }
-  },  {
+  },
+  {
     path: '/curriculum',
     name: 'curriculum',
-    component: curriculum,
+    component: () => import(/* webpackChunkName: "about" */ '../views/curriculum/index.vue'),
+    meta:{
+      title: '课程'
+    }
+  },
+  {
+    path: '/curriculum_live',
+    name: 'curriculum_live',
+    component: () => import(/* webpackChunkName: "about" */ '../views/curriculum/live_broadcast.vue'),
     meta:{
       title: '课程'
     }

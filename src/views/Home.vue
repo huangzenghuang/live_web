@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="recommend_carousel_box">
-        <div class="recommend_carousel" v-for="item in freeCourse" :key="item.id">
+        <div class="recommend_carousel" v-for="item in freeCourse" :key="item.id" @click="lookOverCurriculums(item)">
           <div class="recommend_carousel_img">
             <img :src="item.image" alt="">
             <div>{{item.type_str}}</div>
@@ -28,7 +28,7 @@
             </div>
             <div class="content_main">
               <p>开课时间：{{item.curriculum_time}}开课</p>
-              <p>难度：<span :class="difficulty[item.level]">{{item.level_str}}</span></p>
+              <p>难度：<span :class="$parent.difficulty[item.level]">{{item.level_str}}</span></p>
               <div class="content_price">免费</div>
             </div>
             <div class="content_user">
@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="recommend_carousel_box">
-        <div class="recommend_carousel" v-for="item in boutiqueCourse" :key="item.id">
+        <div class="recommend_carousel" v-for="item in boutiqueCourse" :key="item.id" @click="lookOverCurriculums(item)">
           <div class="recommend_carousel_img">
             <img :src="item.image" alt="">
             <div>{{item.type_str}}</div>
@@ -63,7 +63,7 @@
             </div>
             <div class="content_main">
               <p>开课时间：{{item.curriculum_time}}开课</p>
-              <p>难度：<span :class="difficulty[item.level]">{{item.level_str}}</span></p>
+              <p>难度：<span :class="$parent.difficulty[item.level]">{{item.level_str}}</span></p>
               <div class="content_price">免费</div>
             </div>
             <div class="content_user">
@@ -77,6 +77,7 @@
         </div>
       </div>
     </div>
+    <wk-footer></wk-footer>
   </div>
 </template>
 <script>
@@ -87,15 +88,16 @@ export default {
       carouselList:[],
       freeCourse:[],
       boutiqueCourse:[],
-      difficulty:['','difficulty_too_easy','difficulty_easy','difficulty_medium','difficulty_difficult','difficulty_too_difficult']
     }
   },
   methods:{
+    //查询轮播图
     queryCarousel(){
       this.$axios.post('https://wkapi.shejizhizi.com/?s=App.Goods_Goods.BannerList',{
         position:'index'
       }).then(({data})=>{
         this.carouselList = data
+        console.info(data)
         setTimeout(() => {
           this.$refs.carousel.next()
         }, 200);
@@ -103,6 +105,7 @@ export default {
         console.error(error)
       })
     },
+    //查询课程
     queryCourse(){
       this.$axios.post('https://wkapi.shejizhizi.com/?s=App.Goods_Goods.GoodsList',{
       }).then(({data})=>{
@@ -118,6 +121,10 @@ export default {
       }).catch((error)=>{
         console.info(error)
       })
+    },
+    // 课程详情
+    lookOverCurriculums(item){
+      this.$router.push({path: '/curriculum?type='+(item.type_str.includes('直播')>-1?'live':'recorded')+'&id='+item.id});
     }
   },
   mounted(){
