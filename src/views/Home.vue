@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="recommend_carousel_box">
-        <div class="recommend_carousel" v-for="item in freeCourse" :key="item.id" @click="lookOverCurriculums(item)">
+        <div class="recommend_carousel" v-for="item in freeCourse" :key="item.id" @click.stop="lookOverCurriculums(item)">
           <div class="recommend_carousel_img">
             <img :src="item.image" alt="">
             <div>{{item.type_str}}</div>
@@ -33,7 +33,7 @@
             </div>
             <div class="content_user">
               <div>
-                <img :src="item.avatar" alt="">
+                <img :src="item.avatar" alt="" @click.stop="goTeacherHome(item)">
                 {{item.nickname}}
               </div>
               <div>{{item.applys}}人已报名</div>
@@ -68,7 +68,7 @@
             </div>
             <div class="content_user">
               <div>
-                <img :src="item.avatar" alt="">
+                <img :src="item.avatar" alt="" @click.stop="goTeacherHome(item)">
                 {{item.nickname}}
               </div>
               <div>{{item.applys}}人已报名</div>
@@ -125,6 +125,9 @@ export default {
     // 课程详情
     lookOverCurriculums(item){
       this.$router.push({path: '/curriculum?type='+(item.type_str.includes('直播')>-1?'live':'recorded')+'&id='+item.id});
+    },
+    goTeacherHome(item){
+      location.href = "/teacher_home"
     }
   },
   mounted(){

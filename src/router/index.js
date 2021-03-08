@@ -16,7 +16,7 @@ const routes = [
   {
     path: '/curriculum',
     name: 'curriculum',
-    component: () => import(/* webpackChunkName: "about" */ '../views/curriculum/index.vue'),
+    component: () => import('../views/curriculum/index.vue'),
     meta:{
       title: '课程'
     }
@@ -24,7 +24,7 @@ const routes = [
   {
     path: '/curriculum_live',
     name: 'curriculum_live',
-    component: () => import(/* webpackChunkName: "about" */ '../views/curriculum/live_broadcast.vue'),
+    component: () => import('../views/curriculum/live_broadcast.vue'),
     meta:{
       title: '课程'
     }
@@ -32,12 +32,17 @@ const routes = [
   {
     path: '/academy',
     name: 'Academy',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/academy.vue'),
+    component: () => import('../views/academy.vue'),
     meta:{
       title: '学院'
+    }
+  },
+  {
+    path: '/teacher_home',
+    name: 'Academy',
+    component: () => import('../views/teacher/home.vue'),
+    meta:{
+      title: '教师主页'
     }
   }
 ]

@@ -301,7 +301,10 @@
           width: 3.35rem;
           height: 0.98rem;
           margin-top: 0.32rem;
-
+          
+          padding-top: 0.32rem;
+          box-sizing: border-box;
+          
           display: flex;
           justify-content: space-between;
           background: url(https://alioss.shejizhizi.com/front/curriculum/content_img_coupon_nor@2x.png) no-repeat center center / cover;
@@ -319,12 +322,13 @@
           }
           #coupon_info{
             height: 0.43rem;
-            font-size: 0.3rem;
             font-family: Source Han Sans CN;
             font-weight: 400;
             color: #FFFFFF;
+            div{
+              font-size: 0.2rem;
+            }
             span{
-              height: 0.13rem;
               font-size: 0.13rem;
               font-family: Source Han Sans CN;
               font-weight: 400;
@@ -338,6 +342,7 @@
             box-sizing: border-box;
             border: 0.01rem solid #66CCFF;
             border-radius: 0.18rem;
+            margin-right: 0.06rem;
 
             text-align: center;
             line-height: 0.3rem;
