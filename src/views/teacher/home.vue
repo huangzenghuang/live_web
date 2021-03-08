@@ -391,9 +391,9 @@ export default {
                             background: #363944;
                         }
                     }
-                    .live_bottom{
-                        
-                    }
+                    // .live_bottom{
+
+                    // }
                 }
             }
         }
