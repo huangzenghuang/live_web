@@ -86,17 +86,20 @@
                                     {{item.date}}
                                 </div>
                                 <div class="comment_content">
-                                    {{item.message}}
+                                    评论内容：{{item.message}}
                                 </div>
                                 <div class="comment_more">
                                     <div>回复</div>
                                     <div>
-                                        <div></div>
+                                        <div class="comment_live"></div>
                                         {{item.liveNum}}赞
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="see_all">
+                        全部{{item.commentList}}条回复，<span>查看全部</span>
                     </div>
                 </div>
             </div>
@@ -158,6 +161,7 @@ export default {
                     liveStatus:1,
                     commentNum:100,
                     shareNum:20,
+                    commentList:20,
                     comments:[
                         {
                             id:123,
@@ -493,9 +497,95 @@ export default {
                         width: 10.78rem;
                         border-top: 0.01rem solid #333333;
                         border-radius: 0rem;
-
+                        color: #FFFFFF;
+                        padding-top: 0.44rem;
                         .comment{
+                            display: flex;
+                            box-sizing: border-box;
+                            padding: 0 0.73rem;
+                            margin-bottom: 0.26rem;
+                            img{
+                                width: 0.43rem;
+                                height: 0.43rem;
+                                border-radius: 50%;
+                                object-fit: cover;
+                            }
+                            div{
+                                margin-left: 0.12rem;
+                                .comment_name{
+                                    width: 0.74rem;
+                                    font-size: 0.19rem;
+                                    font-family: Source Han Sans CN;
+                                    font-weight: 400;
+                                    color: #FFFFFF;
+                                }
+                                .comment_date{
+                                    width: 1.64rem;
+                                    font-size: 0.15rem;
+                                    font-family: Source Han Sans CN;
+                                    font-weight: 400;
+                                    color: #CCCCCC;
+                                }
+                                .comment_content{
+                                    width: 8.77rem;
+                                    background: #1F2D3E;
+                                    border-radius: 0.04rem;
+                                    margin-top: 0.1rem;
 
+                                    box-sizing: border-box;
+                                    padding: 0.22rem 0.16rem;
+                                    font-size: 0.13rem;
+                                    font-family: Source Han Sans CN;
+                                    font-weight: 400;
+                                    color: #FFFFFF;
+                                }
+                                .comment_more{
+                                    display: flex;
+                                    align-content: center;
+                                    justify-content: flex-end;
+                                    margin-top: 0.1rem;
+
+                                    height: 0.21rem;
+                                    font-size: 0.19rem;
+                                    font-family: Source Han Sans CN;
+                                    font-weight: 400;
+                                    color: #999999;
+                                    div{
+                                        display: flex;
+                                        align-content: center;
+                                        padding: 0 0.15rem;
+                                    }
+                                    >div:first-child{
+                                        border-right: 0.01rem solid #666666;
+                                    }
+                                    .comment_live{
+                                        width: 0.22rem;
+                                        height: 0.22rem;
+                                        background: url(https://alioss.shejizhizi.com/front/comment/content_icon_good_nor@2x.png) no-repeat center center / cover;
+                                    }
+                                    .comment_select{
+                                        background: url(https://alioss.shejizhizi.com/front/comment/content_icon_good_highlig@2x.png) no-repeat center center / cover;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .see_all{
+                        width: 11.25rem;
+                        height: 0.94rem;
+                        background: #363944;
+                        border-radius: 0.04rem;
+                        position: relative;
+                        right: 0.29rem;
+
+                        text-align: center;
+                        line-height: 0.94rem;
+                        font-size: 0.22rem;
+                        font-family: Source Han Sans CN;
+                        font-weight: 400;
+                        color: #FFFFFF;
+                        span:hover{
+                            color: #66CCFF;
                         }
                     }
                 }
