@@ -152,12 +152,12 @@
             </div>
           </div>
         </div>
-        <div id="reply" v-show="replay.id">
+        <div id="reply" v-show="reply.id">
           <div id="textarea">
-            <a-textarea v-model="replay.content" placeholder="回复风暴英雄：" :rows="4" :maxLength="200"></a-textarea>
-            <div>{{replay.content.length}}/200</div>
+            <a-textarea v-model="reply.content" placeholder="回复风暴英雄：" :rows="4" :maxLength="200"></a-textarea>
+            <div>{{reply.content.length}}/200</div>
           </div>
-          <div>
+          <div id="reply_button">
             发表评论
           </div>
         </div>
@@ -197,7 +197,8 @@
         }],
         menuSelect:0,
         curriculumSelect: 2,
-        replay:{
+        reply:{
+          id:1,
           content:''
         }
       }
@@ -610,9 +611,13 @@
         }
 
         #reply{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-end;
           #textarea{
             position: relative;
-            /deep/.ant-input-affix-wrapper.ant-input-affix-wrapper-textarea-with-clear-btn .ant-input{
+            width: 11.25rem;
+            /deep/.ant-input{
               width: 11.25rem;
               height: 1.41rem;
               background: #1F2D3E;
@@ -633,6 +638,20 @@
               color: #FFFFFF;
               opacity: 0.5;
             }
+          }
+          #reply_button{
+            width: 1.2rem;
+            height: 0.47rem;
+            background: #999999;
+            border-radius: 0.04rem;
+            margin-top: 0.16rem;
+
+            text-align: center;
+            line-height: 0.47rem;
+            font-size: 0.21rem;
+            font-family: Source Han Sans CN;
+            font-weight: 400;
+            color: #FFFFFF;
           }
         }
 

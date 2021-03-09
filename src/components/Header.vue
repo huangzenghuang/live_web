@@ -1,6 +1,6 @@
 <template>
     <div id="header">
-        <div id="logo">LOGO</div>
+        <img id="logo" src="https://alioss.shejizhizi.com/front/%E9%A6%96%E9%A1%B5%E5%9B%BE%E6%A0%87/nav_img_lgoo_nor%402x.png" alt="">
         <div id="menu">
             <router-link v-for="(item,index) in routerList" :key="index+item" 
                 :class="'menu_item '+(isClick==index?'menu_item_select':'')+' '+(item.isOpen?'':'forbidden')" :to="item.path">
@@ -83,13 +83,9 @@ export default {
         display: flex;
         justify-content: space-between;
         #logo{
-            width: 1.18rem;
-            height: 0.35rem;
-            line-height: 1.1rem;
-            font-size: 0.45rem;
-            font-family: Source Han Sans CN;
-            font-weight: 500;
-            color: #14B9D6;
+            height: 0.5rem;
+            object-fit: cover;
+            margin-top: 0.22rem;
         }
         #menu{
             height: 1.1rem;

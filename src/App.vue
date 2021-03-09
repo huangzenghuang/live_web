@@ -63,5 +63,33 @@ export default {
   .difficulty_too_difficult{
     color: #CC3333;
   }
+  .comment_share{
+      border-right: 0.01rem solid #666666;
+      div{
+          background: url(https://alioss.shejizhizi.com/front/comment/content_icon_share_nor@2x.png) no-repeat center center / cover;
+      }
+      div:hover{
+          background: url(https://alioss.shejizhizi.com/front/comment/content_icon_share_highlig@2x.png) no-repeat center center / cover;
+      }
+  }
+  .comment_live{
+      border-right: 0.01rem solid #666666;
+      div{
+          background: url(https://alioss.shejizhizi.com/front/comment/content_icon_comment_nor@2x.png) no-repeat center center / cover;
+      }
+      div:hover{
+          background: url(https://alioss.shejizhizi.com/front/comment/content_icon_comment_highlig@2x.png) no-repeat center center / cover;
+      }
+  }
+  .comment_live{
+      div{
+          background: url(https://alioss.shejizhizi.com/front/comment/content_icon_good_nor@2x.png) no-repeat center center / cover;
+      }
+  }
+  .comment_select{
+      div{
+          background: url(https://alioss.shejizhizi.com/front/comment/content_icon_good_highlig@2x.png) no-repeat center center / cover;
+      }
+  }
 }
 </style>
