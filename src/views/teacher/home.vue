@@ -62,7 +62,41 @@
                         <img v-for="item in item.img" :key="item" :src="item" alt="">
                     </div>
                     <div class="live_bottom">
-                        
+                        <div class="live_share">
+                            <div></div>
+                            {{item.shareNum}}
+                        </div>
+                        <div class="live_comment">
+                            <div></div>
+                            {{item.commentNum}}
+                        </div>
+                        <div :class="item.liveStatus?'live_live live_select':'live_live'">
+                            <div></div>
+                            {{item.liveNum}}
+                        </div>
+                    </div>
+                    <div class="comments">
+                        <div class="comment" v-for="item in item.comments" :key="item.id">
+                            <img :src="item.avatar" alt="">
+                            <div>
+                                <div class="comment_name">
+                                    {{item.name}}
+                                </div>
+                                <div class="comment_date">
+                                    {{item.date}}
+                                </div>
+                                <div class="comment_content">
+                                    {{item.message}}
+                                </div>
+                                <div class="comment_more">
+                                    <div>回复</div>
+                                    <div>
+                                        <div></div>
+                                        {{item.liveNum}}赞
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -121,8 +155,19 @@ export default {
                     message:'#XXX话题# Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.',
                     img:[''],
                     liveNum:2000,
+                    liveStatus:1,
                     commentNum:100,
-                    shareNum:20
+                    shareNum:20,
+                    comments:[
+                        {
+                            id:123,
+                            name:'123',
+                            avatar:'1',
+                            date:'2010-10-12 20:12:42',
+                            message:'内容',
+                            liveNum:2000
+                        }
+                    ]
                 }
             ]
         }
@@ -324,6 +369,7 @@ export default {
                     
                     box-sizing: border-box;
                     padding: 0 0.29rem;
+                    margin-bottom: 0.17rem;
                     .live_top{
                         display: flex;
                         padding-top: 0.27rem;
@@ -391,9 +437,67 @@ export default {
                             background: #363944;
                         }
                     }
-                    // .live_bottom{
+                    .live_bottom{
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        height: 1.04rem;
+                        >div{
+                            height: 0.28rem;
+                            display: flex;
+                            align-items: center;
+                            
+                            padding: 0 0.15rem;
+                            font-size: 0.19rem;
+                            font-family: Source Han Sans CN;
+                            font-weight: 400;
+                            color: #999999;
 
-                    // }
+                            >div{
+                                width: 0.26rem;
+                                height: 0.26rem;
+                                object-fit: cover;
+                                margin-right: 0.08rem;
+                            }
+                        }
+                        .live_share{
+                            border-right: 0.01rem solid #666666;
+                            div{
+                                background: url(https://alioss.shejizhizi.com/front/comment/content_icon_share_nor@2x.png) no-repeat center center / cover;
+                            }
+                            div:hover{
+                                background: url(https://alioss.shejizhizi.com/front/comment/content_icon_share_highlig@2x.png) no-repeat center center / cover;
+                            }
+                        }
+                        .live_comment{
+                            border-right: 0.01rem solid #666666;
+                            div{
+                                background: url(https://alioss.shejizhizi.com/front/comment/content_icon_comment_nor@2x.png) no-repeat center center / cover;
+                            }
+                            div:hover{
+                                background: url(https://alioss.shejizhizi.com/front/comment/content_icon_comment_highlig@2x.png) no-repeat center center / cover;
+                            }
+                        }
+                        .live_live{
+                            div{
+                                background: url(https://alioss.shejizhizi.com/front/comment/content_icon_good_nor@2x.png) no-repeat center center / cover;
+                            }
+                        }
+                        .live_select{
+                            div{
+                                background: url(https://alioss.shejizhizi.com/front/comment/content_icon_good_highlig@2x.png) no-repeat center center / cover;
+                            }
+                        }
+                    }
+                    .comments{
+                        width: 10.78rem;
+                        border-top: 0.01rem solid #333333;
+                        border-radius: 0rem;
+
+                        .comment{
+
+                        }
+                    }
                 }
             }
         }
