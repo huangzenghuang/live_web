@@ -171,7 +171,7 @@
                 <div class="work" v-for="item in workList" :key="item.id">
                     <div class="work_top">
                         <img :src="item.img" alt="">
-                        <span>{{item.span}}</span>
+                        <img class="span" :src="item.span" alt="">
                     </div>
                     <div class="work_bottom">
                         <div class="work_title">
@@ -687,6 +687,30 @@ export default {
                 background: #1D1F24;
                 border-radius: 0.04rem;
                 margin: 0 auto;
+                .work{
+                    width: 2.42rem;
+                    height: 2.42rem;
+                    background: #16202D;
+                    border: 0.01rem solid #66CCFF;
+                    border-radius: 0.04rem;
+                    .work_top{
+                        width: 2.42rem;
+                        height: 1.46rem;
+                        border-radius: 0.04rem 0.04rem 0rem 0rem;
+                        position: relative;
+                        img{
+                            width: 2.42rem;
+                            height: 1.46rem;
+                            object-fit: cover;
+                        }
+                        .span{
+                            width: 0.88rem;
+                            height: 0.27rem;
+                            object-fit: cover;
+                            position: absolute;
+                        }
+                    }
+                }
             }
             #reply{
                 width: 11.25rem;
